@@ -5,7 +5,7 @@ Plugin Name: Simple Colorbox
 Plugin URI: http://pixopoint.com/products/simple-colorbox/
 Description: A WordPress plugin which adds a Colorbox to your site with no configuration required.
 Author: Ryan Hellyer
-Version: 1.0
+Version: 1.0.1
 Author URI: http://pixopoint.com/
 
 Copyright (c) 2008 PixoPoint Web Development
@@ -44,7 +44,7 @@ that existing users have a good experience and don't lose access to the plugin.
  */
 define( 'SIMPLECOLORBOX_DIR', dirname( __FILE__ ) . '/' ); // Plugin folder DIR
 define( 'SIMPLECOLORBOX_URL', WP_PLUGIN_URL . '/' . basename( SIMPLECOLORBOX_DIR ) ); // Plugin folder URL
-define( 'SIMPLECOLORBOX_VERSION', '1.0' );
+define( 'SIMPLECOLORBOX_VERSION', '1.0.1' );
 //define( 'SIMPLECOLORBOX_THEME', '5' ); // Can be used to over-ride the default theme
 //define( 'SIMPLECOLORBOX_OPACITY', '0.2' );
 //define( 'SIMPLECOLORBOX_HEIGHT', '50' );
@@ -90,11 +90,11 @@ class Simple_Colorbox {
 	}
 
 	/**
-     * Print scripts onto pages
+	* Print scripts onto pages
 	 * 
 	 * @since 1.0
 	 * @author Ryan Hellyer <ryan@pixopoint.com>
-     */
+	*/
 	function external_scripts() {
 
 		wp_enqueue_script(
@@ -107,17 +107,17 @@ class Simple_Colorbox {
 	}
 
 	/**
-     * Print scripts onto pages
+	* Print scripts onto pages
 	 * 
 	 * @since 1.0
 	 * @author Ryan Hellyer <ryan@pixopoint.com>
-     */
+	*/
 	function inline_scripts() {
 
 		// Do definition check - used by themes/plugins to over-ride the default settings
-		if ( ! defined( SIMPLECOLORBOX_OPACITY ) )
+		if ( ! defined( 'SIMPLECOLORBOX_OPACITY' ) )
 			define( 'SIMPLECOLORBOX_OPACITY', '0.6' );
-		if ( ! defined( SIMPLECOLORBOX_HEIGHT ) )
+		if ( ! defined( 'SIMPLECOLORBOX_HEIGHT' ) )
 			define( 'SIMPLECOLORBOX_HEIGHT', '95' );
 
 		// Colorbox settings
@@ -133,7 +133,7 @@ class Simple_Colorbox {
 	public function external_css() {
 
 		// Do definition check - used by themes/plugins to over-ride the default settings
-		if ( ! defined( SIMPLECOLORBOX_THEME ) )
+		if ( ! defined( 'SIMPLECOLORBOX_THEME' ) )
 			define( 'SIMPLECOLORBOX_THEME', '1' );
 
 		// Load the stylesheet
@@ -141,14 +141,14 @@ class Simple_Colorbox {
 	}
 
 	/**
-     * Display notice about the plugin in head
+	* Display notice about the plugin in head
 	 * 
 	 * @since 1.0
 	 * @author Ryan Hellyer <ryan@pixopoint.com>
-     */
+	*/
 	function simplecolorbox_ad() {
 
-		echo "\n<!-- Multi-level Navigation Plugin v" . SIMPLECOLORBOX_VERSION ." by Ryan Hellyer ... http://pixopoint.com/products/simple-colorbox/ -->\n";
+		echo "\n<!-- Simple Colorbox Plugin v" . SIMPLECOLORBOX_VERSION ." by Ryan Hellyer ... http://pixopoint.com/products/simple-colorbox/ -->\n";
 
 	}
 

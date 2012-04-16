@@ -3,7 +3,7 @@ Contributors: ryanhellyer
 Donate link: http://pixopoint.com/premium_support/
 Tags: colorbox, simple, lightbox, hover, layover
 Requires at least: 3.4
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Description: Adds a very simple Colorbox to your linked images.
 
@@ -35,6 +35,8 @@ We only provide support for the latest version of WordPress.
 
 == Changelog ==
 
+= 1.0.1 =
+* Repair of corrupted initial commit
 = 1.0 =
 * Initial plugin release
 
