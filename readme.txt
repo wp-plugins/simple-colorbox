@@ -2,7 +2,7 @@
 Contributors: ryanhellyer
 Donate link: http://pixopoint.com/premium_support/
 Tags: colorbox, simple, lightbox, hover, layover
-Requires at least: 3.4
+Requires at least: 3.3.1
 Stable tag: 1.0.1
 
 Description: Adds a very simple Colorbox to your linked images.
