@@ -1,9 +1,9 @@
 === Simple Colorbox ===
 Contributors: ryanhellyer
 Donate link: http://pixopoint.com/donate/
-Tags: colorbox, simple, lightbox, hover, layover
-Requires at least: 3.3.1
-Stable tag: 1.1
+Tags: colorbox, simple, lightbox, hover, layover, slideshow
+Requires at least: 3.4
+Stable tag: 1.2
 
 Description: Adds a very simple Colorbox to your linked images.
 
@@ -20,9 +20,10 @@ Simply install and activate the plugin. No settings necessary.
 = Advanced users (if you don't understand this just ignore it) =
 Advanced users may wish to change the design used by setting definitions for the theme, opacity and/or maximum height. Accepted values are:
 `SIMPLECOLORBOX_THEME    Can choose from 1, 2, 3, 4 or 5`
-`SIMPLECOLORBOX_OPACITY  Any value from 0 to 1`
-`SIMPLECOLORBOX_WIDTH    Any value from 0 to 100`
-`SIMPLECOLORBOX_HEIGHT   Any value from 0 to 100`
+`SIMPLECOLORBOX_OPACITY   Any value from 0 to 1`
+`SIMPLECOLORBOX_WIDTH     Any value from 0 to 100`
+`SIMPLECOLORBOX_HEIGHT    Any value from 0 to 100`
+`SIMPLECOLORBOX_SLIDESHOW Setting this to null will remove the slideshow`
 
 == Frequently Asked Questions ==
 
@@ -35,6 +36,9 @@ If you want an uber simple easy to use Colorbox solution.
 We only provide support for the latest version of WordPress.
 
 == Changelog ==
+
+= 1.2 =
+* Added support for slideshows
 
 = 1.1 =
 * Added support for BMP files
@@ -50,5 +54,6 @@ We only provide support for the latest version of WordPress.
 
 Thanks to the following (in no particular order) for help with the development of this plugin:<br />
 
+* <a href="http://arnsteinlarsen.no/">Arnstein Larsen</a> - Motivated me to add slideshow support<br />
 * <a href="http://utkar.sh/">Utkarsh</a> - Assistance with jQuery bug<br />
-* <a href="http://ronalfy.com/">Ronalfy</a> - Suggesting I use Colorbox<br />
+* <a href="http://ronalfy.com/">Ronalfy</a> - Suggested I use Colorbox<br />

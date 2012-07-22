@@ -122,9 +122,21 @@ class Simple_Colorbox {
 			define( 'SIMPLECOLORBOX_WIDTH', '95' );
 		if ( ! defined( 'SIMPLECOLORBOX_HEIGHT' ) )
 			define( 'SIMPLECOLORBOX_HEIGHT', '95' );
+		if ( ! defined( 'SIMPLECOLORBOX_SLIDESHOW' ) )
+			define( 'SIMPLECOLORBOX_SLIDESHOW', 'group' );
 
 		// Colorbox settings
-		echo '<script>jQuery(function($){$("a[href$=\'jpg\'],a[href$=\'jpeg\'],a[href$=\'png\'],a[href$=\'bmp\'],a[href$=\'gif\'],a[href$=\'JPG\'],a[href$=\'JPEG\'],a[href$=\'PNG\'],a[href$=\'BMP\'],a[href$=\'GIF\']").colorbox({ maxWidth:\'' . SIMPLECOLORBOX_WIDTH . '%\',maxHeight:\'' . SIMPLECOLORBOX_HEIGHT . '%\',opacity:\'' . SIMPLECOLORBOX_OPACITY . '\'});});</script>';
+		echo '
+<script>
+	jQuery(function($){
+		$("a[href$=\'jpg\'],a[href$=\'jpeg\'],a[href$=\'png\'],a[href$=\'bmp\'],a[href$=\'gif\'],a[href$=\'JPG\'],a[href$=\'JPEG\'],a[href$=\'PNG\'],a[href$=\'BMP\'],a[href$=\'GIF\']").colorbox({
+			maxWidth:\'' . SIMPLECOLORBOX_WIDTH . '%\',
+			maxHeight:\'' . SIMPLECOLORBOX_HEIGHT . '%\',
+			opacity:\'' . SIMPLECOLORBOX_OPACITY . '\',
+			rel:\'' . SIMPLECOLORBOX_SLIDESHOW . '\'
+		});
+	});
+</script>';
 	}
 
 	/*
