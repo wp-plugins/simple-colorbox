@@ -47,6 +47,7 @@ define( 'SIMPLECOLORBOX_URL', WP_PLUGIN_URL . '/' . basename( SIMPLECOLORBOX_DIR
 define( 'SIMPLECOLORBOX_VERSION', '1.0.1' );
 //define( 'SIMPLECOLORBOX_THEME', '5' ); // Can be used to over-ride the default theme
 //define( 'SIMPLECOLORBOX_OPACITY', '0.2' );
+//define( 'SIMPLECOLORBOX_WIDTH', '50' );
 //define( 'SIMPLECOLORBOX_HEIGHT', '50' );
 
 /**
@@ -95,7 +96,7 @@ class Simple_Colorbox {
 	 * @since 1.0
 	 * @author Ryan Hellyer <ryan@pixopoint.com>
 	*/
-	function external_scripts() {
+	public function external_scripts() {
 
 		wp_enqueue_script(
 			'colorbox',
@@ -107,21 +108,23 @@ class Simple_Colorbox {
 	}
 
 	/**
-	* Print scripts onto pages
+	 * Print scripts onto pages
 	 * 
 	 * @since 1.0
 	 * @author Ryan Hellyer <ryan@pixopoint.com>
-	*/
-	function inline_scripts() {
+	 */
+	public function inline_scripts() {
 
 		// Do definition check - used by themes/plugins to over-ride the default settings
 		if ( ! defined( 'SIMPLECOLORBOX_OPACITY' ) )
 			define( 'SIMPLECOLORBOX_OPACITY', '0.6' );
+		if ( ! defined( 'SIMPLECOLORBOX_WIDTH' ) )
+			define( 'SIMPLECOLORBOX_WIDTH', '95' );
 		if ( ! defined( 'SIMPLECOLORBOX_HEIGHT' ) )
 			define( 'SIMPLECOLORBOX_HEIGHT', '95' );
 
 		// Colorbox settings
-		echo '<script>jQuery(function($){$("a[href$=\'jpg\'],a[href$=\'jpeg\'],a[href$=\'png\'],a[href$=\'gif\']").colorbox({ maxHeight:\'' . SIMPLECOLORBOX_HEIGHT . '%\',opacity:\'' . SIMPLECOLORBOX_OPACITY . '\'});});</script>';
+		echo '<script>jQuery(function($){$("a[href$=\'jpg\'],a[href$=\'jpeg\'],a[href$=\'png\'],a[href$=\'bmp\'],a[href$=\'gif\'],a[href$=\'JPG\'],a[href$=\'JPEG\'],a[href$=\'PNG\'],a[href$=\'BMP\'],a[href$=\'GIF\']").colorbox({ maxWidth:\'' . SIMPLECOLORBOX_WIDTH . '%\',maxHeight:\'' . SIMPLECOLORBOX_HEIGHT . '%\',opacity:\'' . SIMPLECOLORBOX_OPACITY . '\'});});</script>';
 	}
 
 	/*
@@ -146,7 +149,7 @@ class Simple_Colorbox {
 	 * @since 1.0
 	 * @author Ryan Hellyer <ryan@pixopoint.com>
 	*/
-	function simplecolorbox_ad() {
+	public function simplecolorbox_ad() {
 
 		echo "\n<!-- Simple Colorbox Plugin v" . SIMPLECOLORBOX_VERSION ." by Ryan Hellyer ... http://pixopoint.com/products/simple-colorbox/ -->\n";
 

@@ -1,9 +1,9 @@
 === Simple Colorbox ===
 Contributors: ryanhellyer
-Donate link: http://pixopoint.com/premium_support/
+Donate link: http://pixopoint.com/donate/
 Tags: colorbox, simple, lightbox, hover, layover
 Requires at least: 3.3.1
-Stable tag: 1.0.1
+Stable tag: 1.1
 
 Description: Adds a very simple Colorbox to your linked images.
 
@@ -21,6 +21,7 @@ Simply install and activate the plugin. No settings necessary.
 Advanced users may wish to change the design used by setting definitions for the theme, opacity and/or maximum height. Accepted values are:
 `SIMPLECOLORBOX_THEME    Can choose from 1, 2, 3, 4 or 5`
 `SIMPLECOLORBOX_OPACITY  Any value from 0 to 1`
+`SIMPLECOLORBOX_WIDTH    Any value from 0 to 100`
 `SIMPLECOLORBOX_HEIGHT   Any value from 0 to 100`
 
 == Frequently Asked Questions ==
@@ -35,8 +36,13 @@ We only provide support for the latest version of WordPress.
 
 == Changelog ==
 
+= 1.1 =
+* Added support for BMP files
+* Added support for uppercase file extensions
+
 = 1.0.1 =
 * Repair of corrupted initial commit
+
 = 1.0 =
 * Initial plugin release
 
