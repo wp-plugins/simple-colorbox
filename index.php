@@ -5,10 +5,10 @@ Plugin Name: Simple Colorbox
 Plugin URI: http://pixopoint.com/products/simple-colorbox/
 Description: A WordPress plugin which adds a Colorbox to your site with no configuration required.
 Author: Ryan Hellyer
-Version: 1.2
+Version: 1.2.1
 Author URI: http://pixopoint.com/
 
-Copyright (c) 2008 PixoPoint Web Development
+Copyright (c) 2012 Ryan Hellyer
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as
@@ -18,20 +18,6 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 license.txt file included with this plugin for more information.
-
-
-So yer readin' the source code eh? Apologies if things are a bit messy in here. This is 
-one of the first plugins I ever released, and it showed in the source code. The plugin was
-somewhat of a disaster code wise and I did a massive upgrade of it on April 4th 2012. In
-the interests of not breaking things, I kept a lot of legacy code around which I knew wasn't 
-likely to case any performance or security issues, but has left a huge chunk of ugly looking 
-code in the legacy.php file. There are also bits of similarly ugly code scattered about the
-plugin code. Sorry about that, but I figured it was best to leave it ugly than risk breaking
-things by messing with it. As the saying goes, "If it aint broke, don't fix it!".
-
-If you find any bug fixes, please let me know via ryan@pixopoint.com, but please be aware that
-I am not intending to ever add any more features to this plugin. I'm purely maintaining to ensure
-that existing users have a good experience and don't lose access to the plugin.
 
 */
 
@@ -44,7 +30,7 @@ that existing users have a good experience and don't lose access to the plugin.
  */
 define( 'SIMPLECOLORBOX_DIR', dirname( __FILE__ ) . '/' ); // Plugin folder DIR
 define( 'SIMPLECOLORBOX_URL', WP_PLUGIN_URL . '/' . basename( SIMPLECOLORBOX_DIR ) ); // Plugin folder URL
-define( 'SIMPLECOLORBOX_VERSION', '1.2' );
+define( 'SIMPLECOLORBOX_VERSION', '1.2.1' );
 //define( 'SIMPLECOLORBOX_THEME', '5' ); // Can be used to over-ride the default theme
 //define( 'SIMPLECOLORBOX_OPACITY', '0.2' );
 //define( 'SIMPLECOLORBOX_WIDTH', '50' );
