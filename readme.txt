@@ -37,10 +37,8 @@ We only provide support for the latest version of WordPress.
 
 == Changelog ==
 
-= 1.2.2 =
-* Minor upgrade
-* Changed from WP_PLUGIN_URL to plugins_url()
-* Allowed for use on https sites
+= 1.2.3 =
+* Added missing files back in
 
 = 1.2.1 =
 * Minor upgrade

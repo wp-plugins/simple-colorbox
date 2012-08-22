@@ -5,7 +5,7 @@ Plugin Name: Simple Colorbox
 Plugin URI: http://pixopoint.com/products/simple-colorbox/
 Description: A WordPress plugin which adds a Colorbox to your site with no configuration required.
 Author: Ryan Hellyer
-Version: 1.2.2
+Version: 1.2.3
 Author URI: http://pixopoint.com/
 
 Copyright (c) 2012 Ryan Hellyer
@@ -30,7 +30,7 @@ license.txt file included with this plugin for more information.
  */
 define( 'SIMPLECOLORBOX_DIR', dirname( __FILE__ ) . '/' ); // Plugin folder DIR
 define( 'SIMPLECOLORBOX_URL', plugins_url( '', __FILE__ ) ); // Plugin folder URL
-define( 'SIMPLECOLORBOX_VERSION', '1.2.1' );
+define( 'SIMPLECOLORBOX_VERSION', '1.2.3' );
 //define( 'SIMPLECOLORBOX_THEME', '5' ); // Can be used to over-ride the default theme
 //define( 'SIMPLECOLORBOX_OPACITY', '0.2' );
 //define( 'SIMPLECOLORBOX_WIDTH', '50' );
