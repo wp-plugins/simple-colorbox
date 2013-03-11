@@ -2,13 +2,13 @@
 /*
 
 Plugin Name: Simple Colorbox
-Plugin URI: http://pixopoint.com/products/simple-colorbox/
+Plugin URI: http://geek.ryanhellyer.net/products/simple-colorbox/
 Description: A WordPress plugin which adds a Colorbox to your site with no configuration required.
 Author: Ryan Hellyer
-Version: 1.2.4
-Author URI: http://pixopoint.com/
+Version: 1.3
+Author URI: http://geek.ryanhellyer.net/
 
-Copyright (c) 2012 Ryan Hellyer
+Copyright (c) 2013 Ryan Hellyer
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as
@@ -26,7 +26,7 @@ license.txt file included with this plugin for more information.
  * Define constants
  * 
  * @since 1.0
- * @author Ryan Hellyer <ryan@pixopoint.com>
+ * @author Ryan Hellyer <ryanhellyer@gmail.com>
  */
 define( 'SIMPLECOLORBOX_DIR', dirname( __FILE__ ) . '/' ); // Plugin folder DIR
 define( 'SIMPLECOLORBOX_URL', plugins_url( '', __FILE__ ) ); // Plugin folder URL
@@ -37,15 +37,6 @@ define( 'SIMPLECOLORBOX_VERSION', '1.2.4' );
 //define( 'SIMPLECOLORBOX_HEIGHT', '50' );
 
 /**
- * Instantiate the plugin
- * 
- * @copyright Copyright (c), Ryan Hellyer
- * @author Ryan Hellyer <ryan@pixopoint.com>
- * @since 1.0
- */
-new Simple_Colorbox();
-
-/**
  * Simple Colorbox class
  * Adds the required CSS and JS files to front-end of the site
  * 
@@ -54,7 +45,7 @@ new Simple_Colorbox();
  * users needing to install a complicated plugin.
  * 
  * @copyright Copyright (c), Ryan Hellyer
- * @author Ryan Hellyer <ryan@pixopoint.com>
+ * @author Ryan Hellyer <ryanhellyer@gmail.com>
  * @since 1.0
  */
 class Simple_Colorbox {
@@ -62,9 +53,6 @@ class Simple_Colorbox {
 	/**
 	 * Class constructor
 	 * Adds all the methods to appropriate hooks or shortcodes
-	 * 
-	 * @since 1.0
-	 * @author Ryan Hellyer <ryan@pixopoint.com>
 	 */
 	public function __construct() {
 
@@ -77,11 +65,8 @@ class Simple_Colorbox {
 	}
 
 	/**
-	* Print scripts onto pages
-	 * 
-	 * @since 1.0
-	 * @author Ryan Hellyer <ryan@pixopoint.com>
-	*/
+	 * Print scripts onto pages
+	 */
 	public function external_scripts() {
 
 		wp_enqueue_script(
@@ -95,9 +80,6 @@ class Simple_Colorbox {
 
 	/**
 	 * Print scripts onto pages
-	 * 
-	 * @since 1.0
-	 * @author Ryan Hellyer <ryan@pixopoint.com>
 	 */
 	public function inline_scripts() {
 
@@ -127,9 +109,6 @@ class Simple_Colorbox {
 
 	/*
 	 * Adds CSS to front end of site
-	 * 
-	 * @since 1.0
-	 * @author Ryan Hellyer <ryan@pixopoint.com>
 	 */
 	public function external_css() {
 
@@ -142,16 +121,11 @@ class Simple_Colorbox {
 	}
 
 	/**
-	* Display notice about the plugin in head
-	 * 
-	 * @since 1.0
-	 * @author Ryan Hellyer <ryan@pixopoint.com>
-	*/
+	 * Display notice about the plugin in head
+	 */
 	public function simplecolorbox_ad() {
-
-		echo "\n<!-- Simple Colorbox Plugin v" . SIMPLECOLORBOX_VERSION ." by Ryan Hellyer ... http://pixopoint.com/products/simple-colorbox/ -->\n";
-
+		echo "\n<!-- Simple Colorbox Plugin v" . SIMPLECOLORBOX_VERSION ." by Ryan Hellyer ... http://geek.ryanhellyer.net/products/simple-colorbox/ -->\n";
 	}
 
 }
-
+$simple_colorbox = new Simple_Colorbox();

@@ -1,9 +1,9 @@
 === Simple Colorbox ===
 Contributors: ryanhellyer
-Donate link: http://pixopoint.com/donate/
+Donate link: http://geek.ryanhellyer.net/donate/
 Tags: colorbox, simple, lightbox, hover, layover, slideshow
 Requires at least: 3.4
-Stable tag: 1.2.4
+Stable tag: 1.3
 
 Description: Adds a very simple Colorbox to your linked images.
 
@@ -12,6 +12,8 @@ Description: Adds a very simple Colorbox to your linked images.
 Adds a very simple Colorbox to your linked images. This plugin is intended as an easy to use alternative to other lightbox / Colorbox 
 alternatives. Unlike most other plugins with similar functionality, this one does not have any settings or requirements whatsoever, 
 simple install, activate and yer done :)
+
+<strong>More information can be found on the <a href="http://geek.ryanhellyer.net/products/simple-colorbox/">Simple Colorbox plugin page</a>.</strong>
 
 == Installation ==
 
@@ -35,7 +37,12 @@ If you want an uber simple easy to use Colorbox solution.
 
 We only provide support for the latest version of WordPress.
 
+
 == Changelog ==
+
+= 1.3 =
+* Instantiated class into variable for easy unhooking of CSS
+* Upgraded the plugin documentation
 
 = 1.2.4 =
 * Added missing files back in
