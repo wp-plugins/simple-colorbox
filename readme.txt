@@ -3,7 +3,7 @@ Contributors: ryanhellyer
 Donate link: http://geek.ryanhellyer.net/donate/
 Tags: colorbox, simple, lightbox, hover, layover, slideshow
 Requires at least: 3.4
-Stable tag: 1.3
+Stable tag: 1.3.1
 
 Description: Adds a very simple Colorbox to your linked images.
 
@@ -39,6 +39,9 @@ We only provide support for the latest version of WordPress.
 
 
 == Changelog ==
+
+= 1.3.1 =
+* Returned files which disappeared in version 1.3
 
 = 1.3 =
 * Instantiated class into variable for easy unhooking of CSS
