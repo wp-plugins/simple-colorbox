@@ -3,9 +3,9 @@
 
 Plugin Name: Simple Colorbox
 Plugin URI: http://geek.ryanhellyer.net/products/simple-colorbox/
-Description: A WordPress plugin which adds a Colorbox to your site with no configuration required.
+Description: Adds a Colorbox to your site with no configuration required.
 Author: Ryan Hellyer
-Version: 1.3.1
+Version: 1.6
 Author URI: http://geek.ryanhellyer.net/
 
 Copyright (c) 2013 Ryan Hellyer
@@ -30,11 +30,7 @@ license.txt file included with this plugin for more information.
  */
 define( 'SIMPLECOLORBOX_DIR', dirname( __FILE__ ) . '/' ); // Plugin folder DIR
 define( 'SIMPLECOLORBOX_URL', plugins_url( '', __FILE__ ) ); // Plugin folder URL
-define( 'SIMPLECOLORBOX_VERSION', '1.3.1' );
-//define( 'SIMPLECOLORBOX_THEME', '5' ); // Can be used to over-ride the default theme
-//define( 'SIMPLECOLORBOX_OPACITY', '0.2' );
-//define( 'SIMPLECOLORBOX_WIDTH', '50' );
-//define( 'SIMPLECOLORBOX_HEIGHT', '50' );
+define( 'SIMPLECOLORBOX_VERSION', '1.6' );
 
 /**
  * Simple Colorbox class
@@ -57,32 +53,29 @@ class Simple_Colorbox {
 	public function __construct() {
 
 		// Add action hooks
-		add_action( 'wp_enqueue_scripts', array( $this, 'external_css' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'external_scripts' ) );
-		add_action( 'wp_head',            array( $this, 'simplecolorbox_ad' ) );
-		add_action( 'wp_head',            array( $this, 'inline_scripts' ) );
+		add_action( 'init',               array( $this, 'set_definitions' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'css' ) );
+		add_action( 'wp_head',            array( $this, 'ad' ) );
+
+		// Localization
+		load_plugin_textdomain(
+			'simple-colorbox', // Unique identifier
+			false, // Deprecated abs path
+			dirname( plugin_basename( __FILE__ ) ) . '/languages/' // Languages folder
+		);
 
 	}
 
-	/**
-	 * Print scripts onto pages
+	/*
+	 * Set definitions
+	 *
+	 * This plugin originally used constants to over-ride the default settings
+	 * This was later changed to use filters instead, but these constants are kept for backwards compatibility
+	 *
+	 * Plugin developers should use the 'simple_colorbox_selector' filter instead of these definitions
 	 */
-	public function external_scripts() {
-
-		wp_enqueue_script(
-			'colorbox',
-			SIMPLECOLORBOX_URL . '/scripts/jquery.colorbox-min.js',
-			array( 'jquery' ),
-			1.0,
-			true
-		);		
-	}
-
-	/**
-	 * Print scripts onto pages
-	 */
-	public function inline_scripts() {
-
+	public function set_definitions() {
 		// Do definition check - used by themes/plugins to over-ride the default settings
 		if ( ! defined( 'SIMPLECOLORBOX_OPACITY' ) )
 			define( 'SIMPLECOLORBOX_OPACITY', '0.6' );
@@ -92,40 +85,87 @@ class Simple_Colorbox {
 			define( 'SIMPLECOLORBOX_HEIGHT', '95' );
 		if ( ! defined( 'SIMPLECOLORBOX_SLIDESHOW' ) )
 			define( 'SIMPLECOLORBOX_SLIDESHOW', 'group' );
+		if ( ! defined( 'SIMPLECOLORBOX_THEME' ) )
+			define( 'SIMPLECOLORBOX_THEME', '1' );
+	}
 
-		// Colorbox settings
-		echo '
-<script>
-	jQuery(function($){
-		$("a[href$=\'jpg\'],a[href$=\'jpeg\'],a[href$=\'png\'],a[href$=\'bmp\'],a[href$=\'gif\'],a[href$=\'JPG\'],a[href$=\'JPEG\'],a[href$=\'PNG\'],a[href$=\'BMP\'],a[href$=\'GIF\']").colorbox({
-			maxWidth:\'' . SIMPLECOLORBOX_WIDTH . '%\',
-			maxHeight:\'' . SIMPLECOLORBOX_HEIGHT . '%\',
-			opacity:\'' . SIMPLECOLORBOX_OPACITY . '\',
-			rel:\'' . SIMPLECOLORBOX_SLIDESHOW . '\'
-		});
-	});
-</script>';
+	/**
+	 * Print scripts onto pages
+	 */
+	public function scripts() {
+
+		wp_enqueue_script(
+			'colorbox',
+			SIMPLECOLORBOX_URL . '/scripts/jquery.colorbox-min.js',
+			array( 'jquery' ),
+			1.0,
+			true
+		);
+
+		$default_settings = array(
+			'maxWidth'       => SIMPLECOLORBOX_WIDTH, // Set a maximum width for loaded content. Example: "100%", 500, "500px"
+			'maxHeight'      => SIMPLECOLORBOX_HEIGHT, // Set a maximum height for loaded content. Example: "100%", 500, "500px"
+			'opacity'        => SIMPLECOLORBOX_OPACITY,
+			'rel'            => SIMPLECOLORBOX_SLIDESHOW, // This can be used as an anchor rel alternative for Colorbox. This allows the user to group any combination of elements together for a gallery, or to override an existing rel so elements are not grouped together. $("a.gallery").colorbox({rel:"group1"}); Note: The value can also be set to 'nofollow' to disable grouping.
+		);
+
+		$colorbox_settings = array( 
+			'rel'            => SIMPLECOLORBOX_SLIDESHOW, 
+			'maxWidth'       => SIMPLECOLORBOX_WIDTH . "%", 
+			'maxHeight'      => SIMPLECOLORBOX_HEIGHT . "%", 
+			'opacity'        => SIMPLECOLORBOX_OPACITY, 
+			'current'        => sprintf( __( 'image %1$s of %2$s', 'simple-colorbox' ), '{current}', '{total}' ), // Text or HTML for the group counter while viewing a group. {current} and {total} are detected and replaced with actual numbers while Colorbox runs.
+			'previous'       => _x( 'previous', 'simple-colorbox' ), // Text or HTML for the previous button while viewing a group.
+			'next'           => _x( 'next', 'simple-colorbox' ), // Text or HTML for the next button while viewing a group.
+			'close'          => _x( 'close', 'simple-colorbox' ), // Text or HTML for the close button. The 'esc' key will also close Colorbox.
+			'xhrError'       => __( 'This content failed to load.', 'simple-colorbox' ), // Error message given when ajax content for a given URL cannot be loaded.
+			'imgError'       => __( 'This image failed to load.', 'simple-colorbox' ), // Error message given when a link to an image fails to load.
+			'slideshowStart' => __( 'start slideshow', 'simple-colorbox' ), // Text for the slideshow start button.
+			'slideshowStop'  => __( 'stop slideshow', 'simple-colorbox' ), // Text for the slideshow stop button
+		); 
+
+		// Colorbox settings 
+		$colorbox_selector = "a[href$=\'jpg\'],a[href$=\'jpeg\'],a[href$=\'png\'],a[href$=\'bmp\'],a[href$=\'gif\'],a[href$=\'JPG\'],a[href$=\'JPEG\'],a[href$=\'PNG\'],a[href$=\'BMP\'],a[href$=\'GIF\']"; 
+
+		// Load Colorbox 
+		$colorbox_settings['l10n_print_after'] = ' 
+		jQuery(function($){ 
+			// Examples of how to assign the ColorBox event to elements 
+			$("' . apply_filters( 'simple_colorbox_selector', $colorbox_selector ) . '").colorbox(colorboxSettings); 
+		});'; 
+
+		// Add Colorbox settings
+		wp_localize_script( 'colorbox', 'colorboxSettings', apply_filters( 'simple_colorbox_settings', $colorbox_settings ) );
+
 	}
 
 	/*
 	 * Adds CSS to front end of site
 	 */
-	public function external_css() {
-
-		// Do definition check - used by themes/plugins to over-ride the default settings
-		if ( ! defined( 'SIMPLECOLORBOX_THEME' ) )
-			define( 'SIMPLECOLORBOX_THEME', '1' );
-
+	public function css() {
 		// Load the stylesheet
-		wp_enqueue_style( 'colorbox', SIMPLECOLORBOX_URL . '/themes/theme' . SIMPLECOLORBOX_THEME . '/colorbox.css', false, '', 'screen' );
+		wp_enqueue_style( 'colorbox', SIMPLECOLORBOX_URL . '/themes/theme' . apply_filters( 'simple_colorbox_theme', SIMPLECOLORBOX_THEME ) . '/colorbox.css', false, '', 'screen' );
 	}
 
 	/**
 	 * Display notice about the plugin in head
 	 */
-	public function simplecolorbox_ad() {
+	public function ad() {
 		echo "\n<!-- Simple Colorbox Plugin v" . SIMPLECOLORBOX_VERSION ." by Ryan Hellyer ... http://geek.ryanhellyer.net/products/simple-colorbox/ -->\n";
 	}
 
 }
-$simple_colorbox = new Simple_Colorbox();
+
+/**
+ * Instantiate the Simple Colorbox plugin
+ * This is being substantiated via a hook to provide customization over when the class is instantiated
+ * 
+ * @copyright Copyright (c), Ryan Hellyer
+ * @author Ryan Hellyer <ryanhellyer@gmail.com>
+ * @since 1.5
+ */
+function simple_colorbox() {
+	global $simple_colorbox;
+	$simple_colorbox = new Simple_Colorbox();
+}
+add_action( 'plugins_loaded', 'simple_colorbox' );
