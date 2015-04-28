@@ -3,7 +3,7 @@ Contributors: ryanhellyer
 Donate link: https://geek.hellyer.kiwi/donate/
 Tags: colorbox, simple, lightbox, hover, layover, slideshow, jquery, image, images, picture, pictures, gallery, galleries
 Requires at least: 3.9
-Tested up to: 4.2
+Tested up to: 4.4
 Stable tag: 1.6.1
 
 Description: Adds a very simple Colorbox to your linked images.
